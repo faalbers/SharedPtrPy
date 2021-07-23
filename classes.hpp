@@ -4,6 +4,8 @@
 #include <memory>
 #include <string>
 
+namespace Bubba
+{
 class Child
 {
 public:
@@ -13,25 +15,43 @@ private:
     std::string name_;
 };
 
+class ViewPlane
+{
+public:
+    ViewPlane(std::string name);
+    ~ViewPlane();
+private:
+    std::string name_;
+};
+
+typedef std::shared_ptr<ViewPlane> ViewPlaneSPtr;
+
 class Parent
 {
 public:
     Parent(std::string name);
     ~Parent();
-    void setChildB(std::shared_ptr<Child> child);
+    void setChild(std::shared_ptr<Child> child);
 private:
     std::string name_;
-    std::shared_ptr<Child> childA_;
-    std::shared_ptr<Child> childB_;
+    std::shared_ptr<Child> child_;
 };
 
-class Barrier
+class RenderJob
 {
 public:
-    Barrier(std::string name);
-    ~Barrier();
+    RenderJob(std::string name);
+    ~RenderJob();
+
+    void setViewPlaneSPtr(ViewPlaneSPtr viewPlaneSPtr);
+
 private:
+    ViewPlaneSPtr   viewPlaneSPtr_;
     std::string name_;
 };
+
+typedef std::shared_ptr<RenderJob> RenderJobSPtr;
+
+}
 
 #endif

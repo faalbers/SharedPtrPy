@@ -2,3 +2,6 @@
 	path = extern/pybind11
 	url = ../../pybind/pybind11
 	branch = stable
+[submodule "extern/GFA"]
+	path = extern/GFA
+	url = https://github.com/faalbers/GFA.git

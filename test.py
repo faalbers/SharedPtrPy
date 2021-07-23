@@ -1,38 +1,21 @@
 from sharedPtrPy import *
 import sys
 
-class ChildP:
-    def __init__(self):
-        print('==> ChildP')
-
-    def __del__(self):
-        print('<== ChildP')
-
-class BarrierP:
-    def __init__(self):
-        print('==> BarrierP')
-
-    def __del__(self):
-        print('<== BarrierP')
-
-class ParentP:
-    def __init__(self):
-        print('==> ParentP')
-
-    def __del__(self):
-        print('<== ParentP')
-
-#cp = ChildP('dfg')
-#bp = BarrierP()
-#cpp = ParentP()
-
+print("cb = Child('childB')")
 cb = Child('childB')
-#cc = Child('childC')
-b = Barrier('b')
+print("p = Parent('p')")
 p = Parent('p')
-print('setChildB: childB')
-p.setChildB(cb)
-del cb
-#p.setChildB(cc)
-
+print('p.setChild(cb)')
+p.setChild(cb)
+print('sys.exit(0)')
 sys.exit(0)
+
+print("vp = ViewPlane('vp')")
+vp = ViewPlane('vp')
+print("rj = RenderJob('rj')")
+rj = RenderJob('rj')
+print('rj.setViewPlane(vp)')
+rj.setViewPlane(vp)
+print('sys.exit(0)')
+sys.exit(0)
+
