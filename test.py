@@ -27,10 +27,12 @@ class ParentP:
 #cpp = ParentP()
 
 cb = Child('childB')
-cc = Child('childC')
+#cc = Child('childC')
 b = Barrier('b')
 p = Parent('p')
+print('setChildB: childB')
 p.setChildB(cb)
-p.setChildB(cc)
+del cb
+#p.setChildB(cc)
 
 sys.exit(0)
