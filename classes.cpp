@@ -2,46 +2,30 @@
 #include <iostream>
 #include <string>
 
-Bubba::Child::Child(std::string name) : name_(name) { std::cout << "===> Child: " << name_ << std::endl; }
-Bubba::Child::~Child() { std::cout << "<=== Child: " << name_ << std::endl; }
-
-Bubba::Parent::Parent(std::string name) : name_(name), child_(nullptr) { std::cout << "===> Parent: " << name_ << std::endl; }
-Bubba::Parent::~Parent() { std::cout << "<=== Parent: " << name_ << std::endl; }
-void Bubba::Parent::setChild(std::shared_ptr<Child> child) { child_.reset(); child_ = child; }
-
-Bubba::ViewPlane::ViewPlane(std::string name)
+Bubba::Child::Child(std::string name)
     : name_(name)
  {
-    #ifdef CLASS_DEBUG
-    std::cout << "===> ViewPlane: " << name_ << std::endl;
-    #endif
+    std::cout << "===> Child: " << name_ << std::endl;
 }
 
-Bubba::ViewPlane::~ViewPlane()
+Bubba::Child::~Child()
 {
-    #ifdef CLASS_DEBUG
-    std::cout << "<=== ViewPlane: " << name_ << std::endl;
-    #endif
+    std::cout << "<=== Child: " << name_ << std::endl;
 }
 
-Bubba::RenderJob::RenderJob(std::string name)
-    : name_(name)
+Bubba::Parent::Parent(std::string name)
+    : name_(name), ChildSPtr_(nullptr)
 {
-    #ifdef CLASS_DEBUG
-    std::cout << "===> RenderJob: " << name_ << std::endl;
-    #endif
+    std::cout << "===> Parent: " << name_ << std::endl;
 }
 
-Bubba::RenderJob::~RenderJob()
+Bubba::Parent::~Parent()
 {
-    #ifdef CLASS_DEBUG
-    std::cout << "<=== RenderJob: " << name_ << std::endl;
-    #endif
+    std::cout << "<=== Parent: " << name_ << std::endl;
 }
 
-void Bubba::RenderJob::setViewPlaneSPtr(Bubba::ViewPlaneSPtr viewPlaneSPtr)
+void Bubba::Parent::setChildSPtr(Bubba::ChildSPtr ChildSPtr)
 {
-    // NeedFix: make sure we need to reset first
-    viewPlaneSPtr_.reset(); // delete managed object
-    viewPlaneSPtr_ = viewPlaneSPtr;
+    ChildSPtr_.reset();
+    ChildSPtr_ = ChildSPtr;
 }

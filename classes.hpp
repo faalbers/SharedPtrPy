@@ -6,6 +6,7 @@
 
 namespace Bubba
 {
+
 class Child
 {
 public:
@@ -15,42 +16,22 @@ private:
     std::string name_;
 };
 
-class ViewPlane
-{
-public:
-    ViewPlane(std::string name);
-    ~ViewPlane();
-private:
-    std::string name_;
-};
-
-typedef std::shared_ptr<ViewPlane> ViewPlaneSPtr;
+typedef std::shared_ptr<Child> ChildSPtr;
 
 class Parent
 {
 public:
     Parent(std::string name);
     ~Parent();
-    void setChild(std::shared_ptr<Child> child);
-private:
-    std::string name_;
-    std::shared_ptr<Child> child_;
-};
 
-class RenderJob
-{
-public:
-    RenderJob(std::string name);
-    ~RenderJob();
-
-    void setViewPlaneSPtr(ViewPlaneSPtr viewPlaneSPtr);
+    void setChildSPtr(ChildSPtr ChildSPtr);
 
 private:
-    ViewPlaneSPtr   viewPlaneSPtr_;
+    ChildSPtr   ChildSPtr_;
     std::string name_;
 };
 
-typedef std::shared_ptr<RenderJob> RenderJobSPtr;
+typedef std::shared_ptr<Parent> ParentSPtr;
 
 }
 
